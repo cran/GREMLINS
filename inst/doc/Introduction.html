@@ -1,280 +1,493 @@
 <!DOCTYPE html>
+
 <html>
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
-<title>Mathematical Background</title>
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
-<script type="text/javascript">
-window.onload = function() {
-  var imgs = document.getElementsByTagName('img'), i, img;
-  for (i = 0; i < imgs.length; i++) {
-    img = imgs[i];
-    // center an image if it is the only element of its parent
-    if (img.parentElement.childElementCount === 1)
-      img.parentElement.style.textAlign = 'center';
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<meta name="author" content="Sophie Donnet, Pierre Barbillon" />
+
+<meta name="date" content="2023-03-10" />
+
+<title>GREMLINS. Quick Mathematical Background</title>
+
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
   }
-};
+});
 </script>
 
-<!-- Styles for R syntax highlighter -->
 <style type="text/css">
-   pre .operator,
-   pre .paren {
-     color: rgb(104, 118, 135)
-   }
-
-   pre .literal {
-     color: #990073
-   }
-
-   pre .number {
-     color: #099;
-   }
-
-   pre .comment {
-     color: #998;
-     font-style: italic
-   }
-
-   pre .keyword {
-     color: #900;
-     font-weight: bold
-   }
-
-   pre .identifier {
-     color: rgb(0, 0, 0);
-   }
-
-   pre .string {
-     color: #d14;
-   }
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
 </style>
 
-<!-- R syntax highlighter -->
-<script type="text/javascript">
-var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
-hljs.initHighlightingOnLoad();
-</script>
-
-<!-- MathJax scripts -->
-<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
 
 
 <style type="text/css">
-body, td {
-   font-family: sans-serif;
-   background-color: white;
-   font-size: 13px;
+code {
+white-space: pre;
 }
-
-body {
-  max-width: 800px;
-  margin: auto;
-  padding: 1em;
-  line-height: 20px;
+.sourceCode {
+overflow: visible;
 }
-
-tt, code, pre {
-   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
 }
-
-h1 {
-   font-size:2.2em;
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-
-h2 {
-   font-size:1.8em;
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
 }
-
-h3 {
-   font-size:1.4em;
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 
-h4 {
-   font-size:1.0em;
+
+
+<style type="text/css">
+
+div.csl-bib-body { }
+div.csl-entry {
+clear: both;
 }
-
-h5 {
-   font-size:0.9em;
+.hanging div.csl-entry {
+margin-left:2em;
+text-indent:-2em;
 }
-
-h6 {
-   font-size:0.8em;
+div.csl-left-margin {
+min-width:2em;
+float:left;
 }
-
-a:visited {
-   color: rgb(50%, 0%, 50%);
+div.csl-right-inline {
+margin-left:2em;
+padding-left:1em;
 }
+div.csl-indent {
+margin-left: 2em;
+}
+</style>
 
-pre, img {
-  max-width: 100%;
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
 }
 pre {
-  overflow-x: auto;
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
 }
-pre code {
-   display: block; padding: 0.5em;
+pre:not([class]) {
+background-color: #f7f7f7;
 }
-
 code {
-  font-size: 92%;
-  border: 1px solid #ccc;
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
 }
-
-code[class] {
-  background-color: #F8F8F8;
+p > code, li > code {
+padding: 2px 0px;
 }
-
-table, td, th {
-  border: none;
+div.figure {
+text-align: center;
 }
-
-blockquote {
-   color:#666666;
-   margin:0;
-   padding-left: 1em;
-   border-left: 0.5em #EEE solid;
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
 }
-
-hr {
-   height: 0px;
-   border-bottom: none;
-   border-top-width: thin;
-   border-top-style: dotted;
-   border-top-color: #999999;
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
 }
-
-@media print {
-   * {
-      background: transparent !important;
-      color: black !important;
-      filter:none !important;
-      -ms-filter: none !important;
-   }
-
-   body {
-      font-size:12pt;
-      max-width:100%;
-   }
-
-   a, a:visited {
-      text-decoration: underline;
-   }
-
-   hr {
-      visibility: hidden;
-      page-break-before: always;
-   }
-
-   pre, blockquote {
-      padding-right: 1em;
-      page-break-inside: avoid;
-   }
-
-   tr, img {
-      page-break-inside: avoid;
-   }
-
-   img {
-      max-width: 100% !important;
-   }
-
-   @page :left {
-      margin: 15mm 20mm 15mm 10mm;
-   }
-
-   @page :right {
-      margin: 15mm 10mm 15mm 20mm;
-   }
-
-   p, h2, h3 {
-      orphans: 3; widows: 3;
-   }
-
-   h2, h3 {
-      page-break-after: avoid;
-   }
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
 }
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
 </style>
+
 
 
 
 </head>
 
 <body>
+
+
+
+
+<h1 class="title toc-ignore">GREMLINS. Quick Mathematical
+Background</h1>
+<h4 class="author">Sophie Donnet, Pierre Barbillon</h4>
+<h4 class="date">2023-03-10</h4>
+
+
+<div id="TOC">
+<ul>
+<li><a href="#mathematical-background" id="toc-mathematical-background">Mathematical Background</a>
+<ul>
+<li><a href="#a-collection-of-networks" id="toc-a-collection-of-networks">A collection of networks</a></li>
+<li><a href="#a-probabilistic-latent-variables-model" id="toc-a-probabilistic-latent-variables-model">A probabilistic latent
+variables model</a></li>
+<li><a href="#statistical-inference" id="toc-statistical-inference">Statistical inference</a></li>
+</ul></li>
+<li><a href="#references" id="toc-references">References</a></li>
+</ul>
+</div>
+
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-
 <!-- badges: start -->
-
 <!-- badges: end -->
-
-<p>The goal of GREMLINS is to perform statistical analysis of multipartite networks through a block model approach. </p>
-
-<p>Multipartite networks  consist in the joint observation of several networks implying some common individuals. The individuals (or entities represented by nodes)  at stake are partitioned into groups defined by their nature.
-In what follows, these groups will be referred to as  <strong>functional groups</strong>.</p>
-
-<pre><code class="r">library(GREMLINS)
-</code></pre>
-
+<p>The goal of GREMLINS is to perform statistical analysis of
+multipartite networks through a block model approach.</p>
+<p>Multipartite networks consist in the joint observation of several
+networks implying some common individuals. The individuals (or entities
+represented by nodes) at stake are partitioned into groups defined by
+their nature. In what follows, these groups will be referred to as
+<strong>functional groups</strong>.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(GREMLINS)</span></code></pre></div>
+<div id="mathematical-background" class="section level2">
 <h2>Mathematical Background</h2>
-
-<p>The model is introduced and described in @Donnet. </p>
-
+<p>The model is introduced and described in <span class="citation">Bar-Hen, Barbillon, and Donnet (<a href="#ref-Donnet" role="doc-biblioref">2018</a>)</span>.</p>
+<div id="a-collection-of-networks" class="section level3">
 <h3>A collection of networks</h3>
-
-<p>Assume that \(Q\) functional groups of individuals are at stake.  <strong>A multipartite network is a collection of networks</strong>,  each of them implying one or two functional group. Thus, each network may be </p>
-
+<p>Assume that <span class="math inline">\(Q\)</span> functional groups
+of individuals are at stake. <strong>A multipartite network is a
+collection of networks</strong>, each of them implying one or two
+functional group. Thus, each network may be</p>
 <pre><code>     - *simple* if it represents the relations inside  a   functional   group  
      - *bipartite* if it represent the relations between individuals of two  functional groups. 
-</code></pre>
-
-<p>We index the collection of networks by pairs of functional groups \((q,q')\). The set \(E\) denotes  the  list of pairs of  functional groups  for   which we observe an interaction network.</p>
-
-<p>For any pair \((q,q') \in E\), *<em>the interaction network is encoded in a matrix  \(X^{qq'}\) *</em>  such that  \(X^{qq'}_{ii'} \neq 0\) if there is an edge from unit \(i\) of functional group
-\(q\) to unit \(i'\) of functional group \(q'\), \(X^{qq'}_{ii'} = 0\) otherwise.</p>
-
-<p>For any \((q,q')\), \(X^{qq'}_{ii'}\) may be in \(\{0,1\}\) or a numeric for weigthed networks. </p>
-
-<p>Note that,  if \(q \neq q'\),   \(X^{qq'}\) is  said to be  an <strong>incidence matrix</strong> (corresponding to a bipartite network). If \(q = q'\), \(X^{qq}\) is  an  <strong>adjacency matrix</strong>. Moreover, if the relation inside the functional group \(q\)  is non-oriented, \(X^{qq}\) is symmetric. </p>
-
+     </code></pre>
+<p>We index the collection of networks by pairs of functional groups
+<span class="math inline">\((q,q&#39;)\)</span>. The set <span class="math inline">\(E\)</span> denotes the list of pairs of functional
+groups for which we observe an interaction network.</p>
+<p>For any pair <span class="math inline">\((q,q&#39;) \in E\)</span>,
+<strong>the interaction network is encoded in a matrix <span class="math inline">\(X^{qq&#39;}\)</span> </strong> such that <span class="math inline">\(X^{qq&#39;}_{ii&#39;} \neq 0\)</span> if there is
+an edge from unit <span class="math inline">\(i\)</span> of functional
+group <span class="math inline">\(q\)</span> to unit <span class="math inline">\(i&#39;\)</span> of functional group <span class="math inline">\(q&#39;\)</span>, <span class="math inline">\(X^{qq&#39;}_{ii&#39;} = 0\)</span> otherwise.</p>
+<p>For any <span class="math inline">\((q,q&#39;)\)</span>, <span class="math inline">\(X^{qq&#39;}_{ii&#39;}\)</span> may be in <span class="math inline">\(\{0,1\}\)</span> or a numeric for weigthed
+networks.</p>
+<p>Note that, if <span class="math inline">\(q \neq q&#39;\)</span>,
+<span class="math inline">\(X^{qq&#39;}\)</span> is said to be an
+<strong>incidence matrix</strong> (corresponding to a bipartite
+network). If <span class="math inline">\(q = q&#39;\)</span>, <span class="math inline">\(X^{qq}\)</span> is an <strong>adjacency
+matrix</strong>. Moreover, if the relation inside the functional group
+<span class="math inline">\(q\)</span> is non-oriented, <span class="math inline">\(X^{qq}\)</span> is symmetric.</p>
+</div>
+<div id="a-probabilistic-latent-variables-model" class="section level3">
 <h3>A probabilistic latent variables model</h3>
-
-<p>Let \(n_q\) be  the number of individuals  in the \(q\)-th functional group.
-Assume that,   each functional group \(q\)  is  divided into \(K_q\)  <strong>blocks  or equivalently clusters</strong>.  \(\forall q\) and  \(\forall i\), let \(Z^{q}_i\) be
-the latent random variable  such that \(Z^ q_i =k\)  if individual \(i\) of functional group \(q\) belongs to cluster \(k\).
-The random variables \(Z^{q}_i\)&#39;s are assumed to be independent and  such that: \(\forall (i,k,q) \in   \{1,\dots,n_q\} \times \{1,\dots,K_q\} \times  \{1,\dots,Q\}\):</p>
-
-<p>\begin{equation}\label{eq:mod2}
-\mathbb{P}(Z<sup>{q}_i=k)</sup> = \pi<sup>{q}_k,</sup>
-\end{equation}
-with \(\sum_{k=1}^{K_q}\pi^{q}_k=1\),  \(\forall q=1,\dots, Q\).</p>
-
-<p>Conditionally on the clustering,  the entries of the matrices   \(\left(X^{qq'}_{ii'}\right)\) are assumed to be independent and distributed as follows:
-\(\forall (i,i')  \in \{1,\dots,n_q\} \times  \{1,\dots,n_{q'}\}\),
-\begin{equation}\label{eq:mod1}
-X<sup>{qq&#39;}_{ii&#39;}\;</sup>  |  \; Z<sup>{q}_i=k,</sup> Z<sup>{q&#39;}_{i&#39;}=k&#39;</sup>   \sim<em>{i.i.d} \mathcal{F}</em>{qq&#39;}(\theta<sup>{qq&#39;}_{kk&#39;})\,</sup>
-\end{equation}
-meaning that the probability of connection from \(i\)  of functional group \(q\) to  \(i'\) of functional group \(q'\) only  depends on the clusters to which they belong to.</p>
-
-<p>For any pair \((q,q')\), \(\mathcal{F}_{qq'}(\cdot)\) is either: </p>
-
+<p>Let <span class="math inline">\(n_q\)</span> be the number of
+individuals in the <span class="math inline">\(q\)</span>-th functional
+group. Assume that, each functional group <span class="math inline">\(q\)</span> is divided into <span class="math inline">\(K_q\)</span> <strong>blocks or equivalently
+clusters</strong>. <span class="math inline">\(\forall q\)</span> and
+<span class="math inline">\(\forall i\)</span>, let <span class="math inline">\(Z^{q}_i\)</span> be the latent random variable
+such that <span class="math inline">\(Z^ q_i =k\)</span> if individual
+<span class="math inline">\(i\)</span> of functional group <span class="math inline">\(q\)</span> belongs to cluster <span class="math inline">\(k\)</span>. The random variables <span class="math inline">\(Z^{q}_i\)</span>’s are assumed to be independent
+and such that: <span class="math inline">\(\forall (i,k,q) \in
+\{1,\dots,n_q\} \times \{1,\dots,K_q\} \times
+\{1,\dots,Q\}\)</span>:</p>
+<p><span class="math display">\[\begin{equation}\label{eq:mod2}
+\mathbb{P}(Z^{q}_i=k) = \pi^{q}_k,
+\end{equation}\]</span> with <span class="math inline">\(\sum_{k=1}^{K_q}\pi^{q}_k=1\)</span>, <span class="math inline">\(\forall q=1,\dots, Q\)</span>.</p>
+<p>Conditionally on the clustering, the entries of the matrices <span class="math inline">\(\left(X^{qq&#39;}_{ii&#39;}\right)\)</span> are
+assumed to be independent and distributed as follows: <span class="math inline">\(\forall (i,i&#39;) \in \{1,\dots,n_q\} \times
+\{1,\dots,n_{q&#39;}\}\)</span>, <span class="math display">\[\begin{equation}\label{eq:mod1}
+X^{qq&#39;}_{ii&#39;}\;  |  \; Z^{q}_i=k,
+Z^{q&#39;}_{i&#39;}=k&#39;   \sim_{i.i.d}
+\mathcal{F}_{qq&#39;}(\theta^{qq&#39;}_{kk&#39;})\,
+\end{equation}\]</span> meaning that the probability of connection from
+<span class="math inline">\(i\)</span> of functional group <span class="math inline">\(q\)</span> to <span class="math inline">\(i&#39;\)</span> of functional group <span class="math inline">\(q&#39;\)</span> only depends on the clusters to
+which they belong to.</p>
+<p>For any pair <span class="math inline">\((q,q&#39;)\)</span>, <span class="math inline">\(\mathcal{F}_{qq&#39;}(\cdot)\)</span> is
+either:</p>
 <pre><code>- Bernoulli, resulting into binary interactions
 
 - Poisson for weighted networks of counts
 
-- Gaussian or Laplace for continuous weighted networks. 
-</code></pre>
-
-<p>As a consequence, the collection of networks may contain weighted and/or binary networks.  </p>
-
+- Gaussian or Laplace for continuous weighted networks. </code></pre>
+<p>As a consequence, the collection of networks may contain weighted
+and/or binary networks.</p>
+</div>
+<div id="statistical-inference" class="section level3">
 <h3>Statistical inference</h3>
+<p>The inference of the model consists in the selection of the numbers
+of clusters <span class="math inline">\((K_q)_{q=1,\dots,Q}\)</span> and
+the estimation of the parameters <span class="math inline">\((\theta_{qq&#39;})\)</span>. The model selection
+is performed with the ICL, a penalized likelihood criterion. The
+parameters are estimated with a varitional version of the EM algorithm.
+The estimation procedure also provides a clustering of the entities at
+stake.</p>
+</div>
+</div>
+<div id="references" class="section level2 unnumbered">
+<h2 class="unnumbered">References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-Donnet" class="csl-entry">
+Bar-Hen, Avner, Pierre Barbillon, and Sophie Donnet. 2018. <span>“<span class="nocase">Block models for multipartite networks.Applications in
+ecology and ethnobiology</span>.”</span> <em>arXiv e-Prints</em>, July,
+arXiv:1807.10138. <a href="https://arxiv.org/abs/1807.10138">https://arxiv.org/abs/1807.10138</a>.
+</div>
+</div>
+</div>
 
-<p>The inference of the model consists in the selection of the numbers of clusters \((K_q)_{q=1,\dots,Q}\) and the estimation of the parameters \((\theta_{qq'})\). The model selection is performed with the ICL, a penalized likelihood criterion. The parameters are estimated with a varitional version of the EM algorithm. The estimation procedure also provides a clustering of the entities at stake. </p>
 
-<h2>References</h2>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 
 </body>
-
 </html>

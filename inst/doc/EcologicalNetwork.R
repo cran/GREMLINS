@@ -2,7 +2,7 @@
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "man/figures/README-",
+#  fig.path = "man/figures/README-",
   out.width = "100%"
 )
 
@@ -47,7 +47,4 @@ RES_MBM$fittedModel[[1]]$paramEstim$list_theta$PlantsFlovis
 ## ----MBM Z--------------------------------------------------------------------
 table(RES_MBM$fittedModel[[1]]$paramEstim$Z$Plants)
 table(RES_MBM$fittedModel[[1]]$paramEstim$Z$Ants)      
-
-## ----plot, eval = TRUE--------------------------------------------------------
-plotMBM(RES_MBM,mycol= c("darkolivegreen3", "gold", "tomato","cadetblue3")) 
 
